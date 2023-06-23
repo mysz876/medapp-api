@@ -37,6 +37,6 @@ def updateSpecialization(id: int, data: dict) -> dict:
 def deleteSpecialization(id) -> dict:
     if quDoctorOfSpecialization(id):
         return { 'result': False, 'msg': 'Nie mozna usunąc specjalizacji do której przypisany jest lekarz'}
-    quSpecializationDelete()
+    quSpecializationDelete(id)
     db.session.commit()
     return { 'result': True, 'msg': 'Usunięto dział'}

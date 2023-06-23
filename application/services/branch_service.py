@@ -23,7 +23,7 @@ def newBranch(data: dict) -> dict:
     newBranch = createBranchRow(data)
     db.session.add(newBranch)
     db.session.commit()
-    return { 'result': True, 'msg': 'Dodano nowy dział'}
+    return { 'result': True, 'msg': 'Dodano nowy oddział'}
 
 def updateBranch(id: int, data: dict) -> dict:
     unique = quBranchIsUnique(data['name'])
@@ -36,7 +36,7 @@ def updateBranch(id: int, data: dict) -> dict:
 
 def deleteBranch(id) -> dict:
     if quDoctorOfBranch(id):
-        return { 'result': False, 'msg': 'Nie mozna usunąc działu do którego przypisany jest lekarz'}
+        return { 'result': False, 'msg': 'Nie mozna usunąc oddziału do którego przypisany jest lekarz'}
     quBranchDelete(id)
     db.session.commit()
-    return { 'result': True, 'msg': 'Usunięto dział'}
+    return { 'result': True, 'msg': 'Usunięto oddział'}
